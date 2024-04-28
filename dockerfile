@@ -5,17 +5,17 @@ FROM ruby:3.0
 RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
 
 # Set the working directory inside the container
-WORKDIR /myapp
+WORKDIR /book-manager
 
 # Copy the Gemfile and Gemfile.lock into the container
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile /book-manager/ap/Gemfile
+COPY Gemfile.lock /book-manager/ap/Gemfile.lock
 
 # Install gems
 RUN bundle install
 
 # Copy the main application
-COPY . /myapp
+COPY . /book-manager
 
 # Add a script to be executed every time the container starts
 COPY entrypoint.sh /usr/bin/
